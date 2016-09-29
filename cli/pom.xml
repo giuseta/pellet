@@ -39,16 +39,22 @@
 			<artifactId>pellet-client</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<dependency>
+<!--		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>pellet-server</artifactId>
 			<version>${project.version}</version>
-		</dependency>
+		</dependency>-->
 	  	<dependency>
 	  		<groupId>junit</groupId>
 	  		<artifactId>junit</artifactId>
 	  		<scope>test</scope>
 	  	</dependency>
+	 <dependency>
+	  <groupId>com.squareup.retrofit2</groupId>
+	  <artifactId>retrofit</artifactId>
+	  <version>2.1.1-SNAPSHOT</version>
+	  <type>jar</type>
+	 </dependency>
 	</dependencies>
 	<build>
 		<plugins>

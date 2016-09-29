@@ -36,7 +36,7 @@
 			<artifactId>guice-multibindings</artifactId>
 			<version>4.0</version>
 		</dependency>
-		<dependency>
+<!--		<dependency>
 			<groupId>edu.stanford.protege</groupId>
 			<artifactId>protege-client</artifactId>
 			<version>3.0.0-SNAPSHOT</version>
@@ -46,7 +46,7 @@
 					<artifactId>owlapi-osgidistribution</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
+		</dependency>-->
 		<dependency>
 			<groupId>io.undertow</groupId>
 			<artifactId>undertow-core</artifactId>

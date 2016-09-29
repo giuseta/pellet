@@ -51,7 +51,7 @@ public class Pellet {
 		COMMANDS.put( "lint", new Pellint() );	
 		COMMANDS.put("info", new PelletInfo());
 		COMMANDS.put( "entail", new PelletEntailment() );
-		COMMANDS.put( "server", new PelletServer() );
+		//COMMANDS.put( "server", new PelletServer() );
 	}
 
 	public static void main(String[] args) {

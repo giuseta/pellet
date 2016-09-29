@@ -17,7 +17,7 @@ public final class ClientTools {
 		try {
 			Response<O> aResp = theCall.execute();
 
-			if (!aResp.isSuccess()) {
+			if (!aResp.isSuccessful()) {
 				throw new RuntimeException(String.format("Request call failed: [%d] %s",
 				                                         aResp.code(), aResp.message()));
 			}
