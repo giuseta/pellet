@@ -10,7 +10,7 @@
 	<name>Pellet :: Jena</name>
 
 	<properties>
-		<jena.version>2.13.0</jena.version>
+		<jena.version>3.1.0</jena.version>
 	</properties>
 
 	<dependencies>

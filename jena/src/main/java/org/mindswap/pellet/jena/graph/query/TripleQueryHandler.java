@@ -6,24 +6,21 @@
 
 package org.mindswap.pellet.jena.graph.query;
 
-import static org.mindswap.pellet.utils.iterator.IteratorUtils.flatten;
-
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Set;
-
+import aterm.ATermAppl;
+import org.apache.jena.graph.Node;
+import org.apache.jena.graph.Triple;
+import org.apache.jena.util.iterator.ExtendedIterator;
+import org.apache.jena.util.iterator.WrappedIterator;
 import org.mindswap.pellet.KnowledgeBase;
 import org.mindswap.pellet.jena.JenaUtils;
 import org.mindswap.pellet.jena.PelletInfGraph;
 import org.mindswap.pellet.jena.graph.loader.GraphLoader;
 
-import aterm.ATermAppl;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Set;
 
-import com.hp.hpl.jena.graph.Node;
-import com.hp.hpl.jena.graph.Triple;
-import com.hp.hpl.jena.util.iterator.ExtendedIterator;
-import com.hp.hpl.jena.util.iterator.Map1;
-import com.hp.hpl.jena.util.iterator.WrappedIterator;
+import static org.mindswap.pellet.utils.iterator.IteratorUtils.flatten;
 
 public abstract class TripleQueryHandler {
 	public TripleQueryHandler() {
@@ -38,13 +35,7 @@ public abstract class TripleQueryHandler {
 	}
 
 	protected ExtendedIterator<Triple> objectFiller(final Node s, final Node p, final Iterator<ATermAppl> objects) {
-		Map1<ATermAppl, Triple> map = new Map1<ATermAppl, Triple>() {
-		    public Triple map1( ATermAppl o ) {
-		         return Triple.create( s, p, JenaUtils.makeGraphNode( o ) );
-		    }
-		};
-		
-		return WrappedIterator.create( objects ).mapWith( map );	
+		return WrappedIterator.create(objects).mapWith(aTermAppl -> Triple.create(s, p, JenaUtils.makeGraphNode(aTermAppl)));
 	}
 	
 	protected ExtendedIterator<Triple> objectSetFiller(Node s, Node p, Set<Set<ATermAppl>> objectSets) {
@@ -56,13 +47,7 @@ public abstract class TripleQueryHandler {
 	}
 	
 	protected ExtendedIterator<Triple> propertyFiller(final Node s, final Iterator<ATermAppl> properties, final Node o) {
-		Map1<ATermAppl, Triple> map = new Map1<ATermAppl, Triple>() {
-		    public Triple map1( ATermAppl p ) {
-		         return Triple.create( s, JenaUtils.makeGraphNode( p ), o );
-		    }
-		};
-		
-		return WrappedIterator.create( properties ).mapWith( map );	
+		return WrappedIterator.create(properties).mapWith(aTermAppl -> Triple.create(s, JenaUtils.makeGraphNode(aTermAppl), o));
 	}
 	
 	protected ExtendedIterator<Triple> subjectFiller(Collection<ATermAppl> subjects, Node p, Node o) {
@@ -70,13 +55,7 @@ public abstract class TripleQueryHandler {
 	}
 	
 	protected ExtendedIterator<Triple> subjectFiller(final Iterator<ATermAppl> subjects, final Node p, final Node o) {
-		Map1<ATermAppl, Triple> map = new Map1<ATermAppl, Triple>() {
-		    public Triple map1( ATermAppl s ) {
-		         return Triple.create( JenaUtils.makeGraphNode( s ), p, o );
-		    }
-		};
-		
-		return WrappedIterator.create( subjects ).mapWith( map );	
+		return WrappedIterator.create(subjects).mapWith(aTermAppl -> Triple.create(JenaUtils.makeGraphNode(aTermAppl), p, o));
 	}
 
 	protected ExtendedIterator<Triple> subjectSetFiller(Set<Set<ATermAppl>> subjectSets, Node p, Node o) {
